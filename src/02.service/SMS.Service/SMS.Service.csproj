@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Hangfire.Core" Version="1.7.28" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SMS.Base\SMS.Base.csproj" />
+    <ProjectReference Include="..\SMS.Data\SMS.Data.csproj" />
+    <ProjectReference Include="..\SMS.Model\SMS.Model.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Implement\" />
+  </ItemGroup>
+
+</Project>
