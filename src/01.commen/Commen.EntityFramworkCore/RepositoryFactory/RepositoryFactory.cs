@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Commen.EntityFramworkCore
+namespace Common.VNextFramework.EntityFramework
 {
    public class RepositoryFactory:IRepositoryFactory
     {

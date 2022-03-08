@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using SMS.Data.Entities;
-using SMS.Model.Dtos;
 using SMS.Model.Dtos;
 
 namespace BC.CSM.Response.Application

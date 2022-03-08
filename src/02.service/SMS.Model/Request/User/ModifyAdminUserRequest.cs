@@ -1,5 +1,5 @@
 ﻿using System;
-using static SMS.Data.Entities.User;
+using static SMS.Data.Entitys.User;
 
 namespace SMS.Model.Request.User
 {

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Commen.EntityFramworkCore
+namespace Common.VNextFramework.EntityFramework
 {
    public class BaseAuditEntity
     {

@@ -1,4 +1,4 @@
-﻿using BCChina.VNextFramework.Model;
+﻿using Common.VNextFramework.Model;
 
 namespace SMS.Model.Request.User
 {

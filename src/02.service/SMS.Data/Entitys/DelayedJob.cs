@@ -1,4 +1,4 @@
-﻿using Commen.EntityFramworkCore;
+﻿using Common.VNextFramework.EntityFramework;
 using SMS.Base.Enums;
 using System;
 

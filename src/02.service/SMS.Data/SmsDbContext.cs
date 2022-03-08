@@ -1,4 +1,4 @@
-﻿using Commen.EntityFramworkCore;
+﻿using Common.VNextFramework.EntityFramework;
 using Microsoft.EntityFrameworkCore;
 using SMS.Data.Entitys;
 using System;
@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace SMS.Data
 {
-    public class SmsDbContext : MultiDbContext
+    public class SmsDbContext : DbContext
     {
-        public SmsDbContext(DbContextOptions options) : base(options)
+        public SmsDbContext(DbContextOptions<SmsDbContext> options) : base(options)
         {
         }
 

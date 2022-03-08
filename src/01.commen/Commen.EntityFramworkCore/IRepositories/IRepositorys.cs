@@ -7,7 +7,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Commen.EntityFramworkCore
+namespace Common.VNextFramework.EntityFramework
 {
     /// <summary>
     /// 注入上下文实体，以及要操作的表实体

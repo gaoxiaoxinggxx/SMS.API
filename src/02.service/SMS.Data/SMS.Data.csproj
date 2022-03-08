@@ -5,11 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Common.VNextFramework.EntityFramework" Version="1.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.14" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\01.commen\Commen.EntityFramworkCore\Commen.EntityFramworkCore.csproj" />
     <ProjectReference Include="..\SMS.Base\SMS.Base.csproj" />
   </ItemGroup>
 

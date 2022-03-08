@@ -1,4 +1,4 @@
-﻿using Commen.EntityFramworkCore;
+﻿using Common.VNextFramework.EntityFramework;
 using System.Collections.Generic;
 
 namespace SMS.Data.Entitys

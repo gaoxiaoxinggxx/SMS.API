@@ -1,6 +1,6 @@
 ﻿using System;
+using Common.VNextFramework.Model;
 using SMS.Base.Enums;
-using BCChina.VNextFramework.Model;
 
 namespace SMS.Model.Request.RecurringPlan
 {

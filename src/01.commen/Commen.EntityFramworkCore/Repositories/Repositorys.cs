@@ -7,7 +7,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Commen.EntityFramworkCore
+namespace Common.VNextFramework.EntityFramework
 {
     public class Repositorys<T> : IRepositorys<T>  where T:class
     {

@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 
-namespace Commen.EntityFramworkCore
+namespace Common.VNextFramework.EntityFramework
 {
     public class MultiDbContext : DbContext
     {
