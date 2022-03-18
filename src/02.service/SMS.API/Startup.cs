@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
@@ -31,16 +31,20 @@ namespace SMS.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //注入：配置文件信息
             Configuration.Bind("AppSettings", AppSettings);
+            //注入：控制器
             services.AddControllers();
-
-            //services.AddSwaggerService();
+            //注入：Swagger文档
             services.AddCustomSwaggerDocumentService(AppSettings);
-
+            //注入：AddHttpContextAccessor
             services.AddHttpContextAccessor();
             services.AddHttpClient();
+            //注入：数据库上下文
             services.AddDbContextFactory<SmsDbContext>(builder => builder.UseSqlServer(Configuration.GetConnectionString("SmsSqlServer")));
-            
+            //注入：跨域服务
+            //注入：AutoMapper
+            //注入：业务服务注入
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,8 +53,7 @@ namespace SMS.API
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                //app.UseSwagger();
-                //app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SMS.API v1"));
+               
                 app.UseCustomSwagger(AppSettings);
             }
 
