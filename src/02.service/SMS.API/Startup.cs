@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using SMS.API.MicrosoftExtensions;
 using SMS.Base;
 using SMS.Data;
 using System;
@@ -32,7 +33,10 @@ namespace SMS.API
         {
             Configuration.Bind("AppSettings", AppSettings);
             services.AddControllers();
-            services.AddSwaggerService();
+
+            //services.AddSwaggerService();
+            services.AddCustomSwaggerDocumentService(AppSettings);
+
             services.AddHttpContextAccessor();
             services.AddHttpClient();
             services.AddDbContextFactory<SmsDbContext>(builder => builder.UseSqlServer(Configuration.GetConnectionString("SmsSqlServer")));
@@ -45,8 +49,9 @@ namespace SMS.API
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SMS.API v1"));
+                //app.UseSwagger();
+                //app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SMS.API v1"));
+                app.UseCustomSwagger(AppSettings);
             }
 
             app.UseHttpsRedirection();

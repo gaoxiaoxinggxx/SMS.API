@@ -9,5 +9,6 @@ namespace SMS.Base
     public interface IAppSettings
     {
         WebApiProjectConfig WebApiProjectConfig { get; set; }
+        SwaggerConfig SwaggerConfig { get; set; }
     }
 }

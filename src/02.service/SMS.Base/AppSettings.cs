@@ -9,6 +9,7 @@ namespace SMS.Base
     public class AppSettings : IAppSettings
     {
         public WebApiProjectConfig WebApiProjectConfig { get; set; }
+        public SwaggerConfig SwaggerConfig { get; set; }
     }
 
     public class WebApiProjectConfig
@@ -17,5 +18,11 @@ namespace SMS.Base
         public string CorsDefaultName { get; set; }
         public string Origins { get; set; }
         public bool IsDevelopment { get; set; }
+    }
+
+    public class SwaggerConfig
+    {
+        public bool Enable { get; set; }
+        public string Path { get; set; } = string.Empty;
     }
 }

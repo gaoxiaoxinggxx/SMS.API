@@ -11,17 +11,24 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03.sdk", "03.sdk", "{63DC33
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SMS.API", "src\02.service\SMS.API\SMS.API.csproj", "{0C3C8E67-B077-4CAB-A0C0-45204347C7A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMS.Base", "src\02.service\SMS.Base\SMS.Base.csproj", "{40A6E6BF-0DC3-4A44-977F-E40F47F4319A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SMS.Base", "src\02.service\SMS.Base\SMS.Base.csproj", "{40A6E6BF-0DC3-4A44-977F-E40F47F4319A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMS.Data", "src\02.service\SMS.Data\SMS.Data.csproj", "{30383FF1-DC79-4C73-8FD9-229CFB1EC89C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SMS.Data", "src\02.service\SMS.Data\SMS.Data.csproj", "{30383FF1-DC79-4C73-8FD9-229CFB1EC89C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMS.Service", "src\02.service\SMS.Service\SMS.Service.csproj", "{543DA26D-765E-4278-B340-80D1D9A357A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SMS.Service", "src\02.service\SMS.Service\SMS.Service.csproj", "{543DA26D-765E-4278-B340-80D1D9A357A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMS.Model", "src\02.service\SMS.Model\SMS.Model.csproj", "{465135D3-8A99-4D15-8047-2AAF69CB36A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SMS.Model", "src\02.service\SMS.Model\SMS.Model.csproj", "{465135D3-8A99-4D15-8047-2AAF69CB36A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commen.EntityFramworkCore", "src\01.commen\Commen.EntityFramworkCore\Commen.EntityFramworkCore.csproj", "{32A2008F-D082-47A3-80C9-2AF318A33A42}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commen.EntityFramworkCore", "src\01.commen\Commen.EntityFramworkCore\Commen.EntityFramworkCore.csproj", "{32A2008F-D082-47A3-80C9-2AF318A33A42}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commen.Helper", "src\01.commen\Commen.Helper\Commen.Helper.csproj", "{6DA42484-0E6B-4503-A990-96220CC3AC80}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commen.Helper", "src\01.commen\Commen.Helper\Commen.Helper.csproj", "{6DA42484-0E6B-4503-A990-96220CC3AC80}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commen.ExceptionHandling", "src\01.commen\Commen.ExceptionHandling\Commen.ExceptionHandling.csproj", "{FDE91FA1-98E0-4FD6-AB59-3C99C06B93D8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DCC31687-CC2A-40D0-B7A1-0183C93EF1A0}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +64,10 @@ Global
 		{6DA42484-0E6B-4503-A990-96220CC3AC80}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6DA42484-0E6B-4503-A990-96220CC3AC80}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6DA42484-0E6B-4503-A990-96220CC3AC80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDE91FA1-98E0-4FD6-AB59-3C99C06B93D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDE91FA1-98E0-4FD6-AB59-3C99C06B93D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDE91FA1-98E0-4FD6-AB59-3C99C06B93D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDE91FA1-98E0-4FD6-AB59-3C99C06B93D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,6 +80,7 @@ Global
 		{465135D3-8A99-4D15-8047-2AAF69CB36A9} = {C8573CB2-E831-4537-AD12-FE2CA7B19345}
 		{32A2008F-D082-47A3-80C9-2AF318A33A42} = {42939B57-6295-496D-BD23-9F67272B29E3}
 		{6DA42484-0E6B-4503-A990-96220CC3AC80} = {42939B57-6295-496D-BD23-9F67272B29E3}
+		{FDE91FA1-98E0-4FD6-AB59-3C99C06B93D8} = {42939B57-6295-496D-BD23-9F67272B29E3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F06E30FF-AC12-48C7-B9C6-A6923336D156}
