@@ -21,10 +21,9 @@ namespace SMS.API
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration, IBackgroundJobClient backgroundJobClient)
+        public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-            BackgroundJobs = backgroundJobClient;
         }
 
         public AppSettings AppSettings { get; } = new();
@@ -58,7 +57,7 @@ namespace SMS.API
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IBackgroundJobClient backgroundJobClient)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -72,7 +71,7 @@ namespace SMS.API
             app.UseRouting();
 
             //UseCustomHangfire
-            app.UseCustomHangfire(backgroundJobClient);
+            app.UseCustomHangfire();
 
 
             app.UseAuthorization();
@@ -81,7 +80,7 @@ namespace SMS.API
             {
                 endpoints.MapControllers();
                 // hangfire 前端页面
-                endpoints.MapHangfireDashboard();
+                //endpoints.MapHangfireDashboard();
             });
         }
     }

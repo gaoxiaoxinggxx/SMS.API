@@ -30,10 +30,12 @@ namespace SMS.API.MicrosoftExtensions
             return services;
         }
 
-        public static void UseCustomHangfire(this IApplicationBuilder app,IBackgroundJobClient backgroundJobs)
+        public static void UseCustomHangfire(this IApplicationBuilder app)
         {
+            //app.UseHangfireServer();
             app.UseHangfireDashboard();
-            backgroundJobs.Enqueue(() => Console.WriteLine("Hello world from Hangfire!"));
+            
+            //backgroundJobs.Enqueue(() => Console.WriteLine("Hello world from Hangfire!"));
         }
     }
 }
