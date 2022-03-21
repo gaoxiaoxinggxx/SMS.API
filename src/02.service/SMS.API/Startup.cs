@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Hangfire;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
@@ -20,13 +21,16 @@ namespace SMS.API
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IBackgroundJobClient backgroundJobClient)
         {
             Configuration = configuration;
+            BackgroundJobs = backgroundJobClient;
         }
 
         public AppSettings AppSettings { get; } = new();
         public IConfiguration Configuration { get; }
+
+        public IBackgroundJobClient BackgroundJobs { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -49,10 +53,12 @@ namespace SMS.API
             //注入：业务服务注入
             services.AddInjectDependencies(AppSettings);
             //注入：鉴权认证策略
+            //注入：Hangfire定时任务
+            services.AddCustomHangfireService(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IBackgroundJobClient backgroundJobClient)
         {
             if (env.IsDevelopment())
             {
@@ -65,11 +71,17 @@ namespace SMS.API
 
             app.UseRouting();
 
+            //UseCustomHangfire
+            app.UseCustomHangfire(backgroundJobClient);
+
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                // hangfire 前端页面
+                endpoints.MapHangfireDashboard();
             });
         }
     }
