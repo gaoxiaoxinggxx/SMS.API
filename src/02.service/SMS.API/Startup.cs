@@ -43,8 +43,12 @@ namespace SMS.API
             //注入：数据库上下文
             services.AddDbContextFactory<SmsDbContext>(builder => builder.UseSqlServer(Configuration.GetConnectionString("SmsSqlServer")));
             //注入：跨域服务
+            services.AddCustomCorsService(AppSettings);
             //注入：AutoMapper
+            services.AddCustomAutoMapperService();
             //注入：业务服务注入
+            services.AddInjectDependencies(AppSettings);
+            //注入：鉴权认证策略
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

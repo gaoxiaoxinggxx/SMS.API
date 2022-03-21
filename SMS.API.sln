@@ -23,12 +23,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commen.EntityFramworkCore",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commen.Helper", "src\01.commen\Commen.Helper\Commen.Helper.csproj", "{6DA42484-0E6B-4503-A990-96220CC3AC80}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commen.ExceptionHandling", "src\01.commen\Commen.ExceptionHandling\Commen.ExceptionHandling.csproj", "{FDE91FA1-98E0-4FD6-AB59-3C99C06B93D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commen.ExceptionHandling", "src\01.commen\Commen.ExceptionHandling\Commen.ExceptionHandling.csproj", "{FDE91FA1-98E0-4FD6-AB59-3C99C06B93D8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DCC31687-CC2A-40D0-B7A1-0183C93EF1A0}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMS.Repository", "src\02.service\SMS.Repository\SMS.Repository.csproj", "{15F7C154-4831-4B5B-8F3A-A50C00C728B0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -68,6 +70,10 @@ Global
 		{FDE91FA1-98E0-4FD6-AB59-3C99C06B93D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FDE91FA1-98E0-4FD6-AB59-3C99C06B93D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FDE91FA1-98E0-4FD6-AB59-3C99C06B93D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15F7C154-4831-4B5B-8F3A-A50C00C728B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15F7C154-4831-4B5B-8F3A-A50C00C728B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15F7C154-4831-4B5B-8F3A-A50C00C728B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15F7C154-4831-4B5B-8F3A-A50C00C728B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -81,6 +87,7 @@ Global
 		{32A2008F-D082-47A3-80C9-2AF318A33A42} = {42939B57-6295-496D-BD23-9F67272B29E3}
 		{6DA42484-0E6B-4503-A990-96220CC3AC80} = {42939B57-6295-496D-BD23-9F67272B29E3}
 		{FDE91FA1-98E0-4FD6-AB59-3C99C06B93D8} = {42939B57-6295-496D-BD23-9F67272B29E3}
+		{15F7C154-4831-4B5B-8F3A-A50C00C728B0} = {C8573CB2-E831-4537-AD12-FE2CA7B19345}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F06E30FF-AC12-48C7-B9C6-A6923336D156}
