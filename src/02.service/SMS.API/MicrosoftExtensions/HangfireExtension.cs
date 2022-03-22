@@ -1,8 +1,10 @@
 ﻿using Hangfire;
 using Hangfire.SqlServer;
+using Hangfire.Tags.SqlServer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SMS.Service.Hangfire;
 using System;
 
 namespace SMS.API.MicrosoftExtensions
@@ -11,31 +13,28 @@ namespace SMS.API.MicrosoftExtensions
     {
         public static IServiceCollection AddCustomHangfireService(this IServiceCollection services, IConfiguration Configuration)
         {
-            // Add Hangfire services.
-            services.AddHangfire(configuration => configuration
-                .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
-                .UseSimpleAssemblyNameTypeSerializer()
-                .UseRecommendedSerializerSettings()
-                .UseSqlServerStorage(Configuration.GetConnectionString("SmsSqlServer"), new SqlServerStorageOptions
-                {
-                    CommandBatchMaxTimeout = TimeSpan.FromMinutes(5),
-                    SlidingInvisibilityTimeout = TimeSpan.FromMinutes(5),
-                    QueuePollInterval = TimeSpan.Zero,
-                    UseRecommendedIsolationLevel = true,
-                    DisableGlobalLocks = true
-                }));
+            services.AddHangfire((serviceProvider, hangfireConfiguration) =>
+            {
+                hangfireConfiguration.UseSqlServerStorage(Configuration.GetConnectionString("SmsSqlServer"));
+                GlobalJobFilters.Filters.Clear();
+                hangfireConfiguration.UseFilter(new CaptureCultureAttribute());
+                //hangfireConfiguration.UseFilter(new SchedulerRetryFilterAttribute { Attempts = 5 });
+                hangfireConfiguration.UseFilter(new StatisticsHistoryAttribute());
+                hangfireConfiguration.UseFilter(new MyContinuationsSupportAttribute(true));
+            });
 
-            // Add the processing server as IHostedService
-            services.AddHangfireServer();
+            services.AddHangfireServer(x =>
+            {
+                x.Queues = new[] { "default", "change_status" };
+                x.SchedulePollingInterval = TimeSpan.FromSeconds(2);
+            });
             return services;
         }
 
         public static void UseCustomHangfire(this IApplicationBuilder app)
         {
-            //app.UseHangfireServer();
+            app.UseHttpsRedirection();
             app.UseHangfireDashboard();
-            
-            //backgroundJobs.Enqueue(() => Console.WriteLine("Hello world from Hangfire!"));
         }
     }
 }

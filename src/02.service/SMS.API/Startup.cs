@@ -79,8 +79,6 @@ namespace SMS.API
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                // hangfire 前端页面
-                //endpoints.MapHangfireDashboard();
             });
         }
     }

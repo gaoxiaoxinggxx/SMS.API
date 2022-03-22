@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
 using SMS.Base;
 using SMS.Base.Consts;
 using System.Linq;
@@ -22,6 +23,11 @@ namespace SMS.API.MicrosoftExtensions
             });
             return services;
 
+        }
+
+        public static void AddCustomCors(this IApplicationBuilder app, AppSettings appSettings)
+        {
+            app.UseCors(appSettings.WebApiProjectConfig.CorsDefaultName);
         }
 
     }
