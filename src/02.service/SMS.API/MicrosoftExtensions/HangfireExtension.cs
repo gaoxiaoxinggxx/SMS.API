@@ -15,7 +15,7 @@ namespace SMS.API.MicrosoftExtensions
         {
             services.AddHangfire((serviceProvider, hangfireConfiguration) =>
             {
-                hangfireConfiguration.UseSqlServerStorage(Configuration.GetConnectionString("SmsSqlServer"));
+                hangfireConfiguration.UseSqlServerStorage("Server=152.136.237.89;Initial Catalog=db-sms;Persist Security Info=False;User ID=chfl;Password=chfl;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;Integrated Security=SSPI;");
                 GlobalJobFilters.Filters.Clear();
                 hangfireConfiguration.UseFilter(new CaptureCultureAttribute());
                 //hangfireConfiguration.UseFilter(new SchedulerRetryFilterAttribute { Attempts = 5 });

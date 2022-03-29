@@ -25,7 +25,7 @@ namespace SMS.API.MicrosoftExtensions
 
         }
 
-        public static void AddCustomCors(this IApplicationBuilder app, AppSettings appSettings)
+        public static void UseCustomCors(this IApplicationBuilder app, AppSettings appSettings)
         {
             app.UseCors(appSettings.WebApiProjectConfig.CorsDefaultName);
         }
