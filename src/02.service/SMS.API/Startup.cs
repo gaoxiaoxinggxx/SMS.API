@@ -44,8 +44,10 @@ namespace SMS.API
             //注入：业务服务注入
             services.AddInjectDependencies(AppSettings);
             //注入：鉴权认证策略
+            services.AddCustomAuth(AppSettings);
             //注入：Hangfire定时任务
             services.AddCustomHangfireService(Configuration);
+            //注入：ApiService,Refit.HttpClientFactory
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -66,7 +68,7 @@ namespace SMS.API
            
             app.UseCustomHangfire();
 
-            app.UseAuthorization();
+            app.UseCustomAuth();
 
             app.UseEndpoints(endpoints =>
             {

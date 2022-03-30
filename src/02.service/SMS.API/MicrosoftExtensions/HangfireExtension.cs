@@ -4,8 +4,10 @@ using Hangfire.Tags.SqlServer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SMS.API.TokenValidator;
 using SMS.Service.Hangfire;
 using System;
+using System.Data;
 
 namespace SMS.API.MicrosoftExtensions
 {
@@ -13,27 +15,32 @@ namespace SMS.API.MicrosoftExtensions
     {
         public static IServiceCollection AddCustomHangfireService(this IServiceCollection services, IConfiguration Configuration)
         {
-            services.AddHangfire((serviceProvider, hangfireConfiguration) =>
-            {
-                hangfireConfiguration.UseSqlServerStorage("Server=152.136.237.89;Initial Catalog=db-sms;Persist Security Info=False;User ID=chfl;Password=chfl;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;Integrated Security=SSPI;");
-                GlobalJobFilters.Filters.Clear();
-                hangfireConfiguration.UseFilter(new CaptureCultureAttribute());
-                //hangfireConfiguration.UseFilter(new SchedulerRetryFilterAttribute { Attempts = 5 });
-                hangfireConfiguration.UseFilter(new StatisticsHistoryAttribute());
-                hangfireConfiguration.UseFilter(new MyContinuationsSupportAttribute(true));
-            });
-
-            services.AddHangfireServer(x =>
-            {
-                x.Queues = new[] { "default", "change_status" };
-                x.SchedulePollingInterval = TimeSpan.FromSeconds(2);
-            });
+            var storage = new SqlServerStorage(Configuration.GetConnectionString("SmsSqlServer")
+                  , new SqlServerStorageOptions { PrepareSchemaIfNecessary = true, SchemaName= "Sms" });
+            //GlobalConfiguration.Configuration.UseStorage(new SqlServerStorage(storage, new SqlServerStorageOptions
+            //{
+            //    //TransactionIsolationLevel = IsolationLevel.ReadCommitted, // 事务隔离级别。默认值为读提交。
+            //    QueuePollInterval = TimeSpan.FromSeconds(15),             // 作业队列轮询间隔。默认值为15秒
+            //    JobExpirationCheckInterval = TimeSpan.FromHours(1),       // 作业过期检查间隔（管理过期记录）。默认为1小时
+            //    CountersAggregateInterval = TimeSpan.FromMinutes(5),      // 间隔到聚合计数器。默认为5分钟
+            //    PrepareSchemaIfNecessary = true,                          // 如果设置为true，则创建数据库表。默认值为true
+            //    DashboardJobListLimit = 50000,                            // 仪表板作业列表上限。默认值为50000 
+            //    TransactionTimeout = TimeSpan.FromMinutes(1),             // 事务超时。默认为1分钟
+            //}));
+            services.AddHangfire(p => p.UseStorage(storage));
             return services;
         }
 
         public static void UseCustomHangfire(this IApplicationBuilder app)
         {
-            app.UseHttpsRedirection();
+            app.UseHangfireServer();
+            app.UseHangfireDashboard("/hangfire", new DashboardOptions
+            {
+                Authorization = new[] { new HangfireAuthorizationFilter() },
+                IgnoreAntiforgeryToken = true,
+                AppPath = "/swagger/index.html",
+                DashboardTitle = "Schedule Manage System"
+            });
             app.UseHangfireDashboard();
         }
     }

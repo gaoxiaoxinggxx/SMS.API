@@ -10,5 +10,6 @@ namespace SMS.Base
     {
         WebApiProjectConfig WebApiProjectConfig { get; set; }
         SwaggerConfig SwaggerConfig { get; set; }
+        AppClientAuthConfig AppClientAuthConfig { get; set; }
     }
 }

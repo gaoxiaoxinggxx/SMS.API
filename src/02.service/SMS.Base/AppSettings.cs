@@ -9,6 +9,7 @@ namespace SMS.Base
     public class AppSettings : IAppSettings
     {
         public WebApiProjectConfig WebApiProjectConfig { get; set; }
+        public AppClientAuthConfig AppClientAuthConfig { get; set; }
         public SwaggerConfig SwaggerConfig { get; set; }
     }
 
@@ -18,6 +19,13 @@ namespace SMS.Base
         public string CorsDefaultName { get; set; }
         public string Origins { get; set; }
         public bool IsDevelopment { get; set; }
+    }
+
+    public class AppClientAuthConfig
+    {
+        public string Issuer { get; set; }
+        public string Secret { get; set; }
+        public long DefaultExpiredMinutes { get; set; } = 30;
     }
 
     public class SwaggerConfig
