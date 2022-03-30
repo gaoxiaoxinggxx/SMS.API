@@ -13,6 +13,7 @@ namespace SMS.API.MicrosoftExtensions
 {
     public static class HangfireExtension
     {
+        // https://www.cnblogs.com/netlock/p/14097300.html
         public static IServiceCollection AddCustomHangfireService(this IServiceCollection services, IConfiguration Configuration)
         {
             var storage = new SqlServerStorage(Configuration.GetConnectionString("SmsSqlServer")
