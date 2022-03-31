@@ -8,5 +8,6 @@ namespace SMS.Model.Request.User
         public string Email { get; set; }
         public UserStatusEnum Status { get; set; }
         public UserRoleEnum Role { get; set; }
+        public string PassWord { get; set; }
     }
 }

@@ -7,11 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Common.VNextFramework.EntityFramework" Version="1.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.3.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\01.commen\Commen.EntityFrameworkCore.SqlServer\Common.VNextFramework.EntityFramework\Common.VNextFramework.EntityFramework.csproj" />
     <ProjectReference Include="..\SMS.Base\SMS.Base.csproj" />
     <ProjectReference Include="..\SMS.Data\SMS.Data.csproj" />
   </ItemGroup>

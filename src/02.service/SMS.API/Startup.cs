@@ -36,7 +36,7 @@ namespace SMS.API
             services.AddHttpContextAccessor();
             services.AddHttpClient();
             //注入：数据库上下文
-            services.AddDbContextFactory<SmsDbContext>(builder => builder.UseSqlServer(Configuration.GetConnectionString("SmsSqlServer")));
+            services.AddCustomDbContextService(Configuration);
             //注入：跨域服务
             services.AddCustomCorsService(AppSettings);
             //注入：AutoMapper
@@ -63,11 +63,11 @@ namespace SMS.API
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            //跨域管道
             app.UseCustomCors(AppSettings);
-           
+            //hangfire管道
             app.UseCustomHangfire();
-
+            //鉴权授权管道
             app.UseCustomAuth();
 
             app.UseEndpoints(endpoints =>

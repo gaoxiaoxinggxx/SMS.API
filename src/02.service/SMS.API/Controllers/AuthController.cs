@@ -2,11 +2,13 @@
 using Microsoft.AspNetCore.Mvc;
 using SMS.Base.Attributes;
 using SMS.Base.Enums;
+using SMS.Model.Request.User;
+using SMS.Service.Interfaces;
 using System.Threading.Tasks;
 
 namespace SMS.API.Controllers
 {
-    public class AuthController : BaseApiController
+    public class AuthController : AppBaseApiController
     {
         /// <summary>
         /// 鉴权
@@ -17,6 +19,5 @@ namespace SMS.API.Controllers
         {
             return await Task.FromResult(true);
         }
-
     }
 }

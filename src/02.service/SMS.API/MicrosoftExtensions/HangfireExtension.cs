@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SMS.API.TokenValidator;
-using SMS.Service.Hangfire;
 using System;
 using System.Data;
 
@@ -17,7 +16,7 @@ namespace SMS.API.MicrosoftExtensions
         public static IServiceCollection AddCustomHangfireService(this IServiceCollection services, IConfiguration Configuration)
         {
             var storage = new SqlServerStorage(Configuration.GetConnectionString("SmsSqlServer")
-                  , new SqlServerStorageOptions { PrepareSchemaIfNecessary = true, SchemaName= "Sms" });
+                  , new SqlServerStorageOptions { PrepareSchemaIfNecessary = true, SchemaName= "Hangfire" });
             //GlobalConfiguration.Configuration.UseStorage(new SqlServerStorage(storage, new SqlServerStorageOptions
             //{
             //    //TransactionIsolationLevel = IsolationLevel.ReadCommitted, // 事务隔离级别。默认值为读提交。

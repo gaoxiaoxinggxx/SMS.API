@@ -9,9 +9,9 @@ namespace SMS.Base.Enums
 {
     public enum ApiGroupNameEnum
     {
-        [Description("Auth")]
-        Auth,
-        [Description("Test")]
-        Test,
+        [Description("App")]
+        App,
+        [Description("Other")]
+        Other,
     }
 }

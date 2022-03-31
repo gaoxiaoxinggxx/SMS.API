@@ -9,13 +9,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\01.commen\Commen.Helper\Commen.Helper.csproj" />
     <ProjectReference Include="..\SMS.Base\SMS.Base.csproj" />
     <ProjectReference Include="..\SMS.Data\SMS.Data.csproj" />
     <ProjectReference Include="..\SMS.Model\SMS.Model.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Implement\" />
+    <Folder Include="Hangfire\" />
   </ItemGroup>
 
 </Project>

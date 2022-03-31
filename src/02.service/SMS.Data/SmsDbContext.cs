@@ -2,9 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using SMS.Data.Entitys;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -20,6 +18,8 @@ namespace SMS.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //自定义表名前缀
+            modelBuilder.HasDefaultSchema("Sms");
             // 根据实体类名来生成数据库名称、默认是根据DbSet<User> Users 生成表明的。
             foreach (var mutableEntityType in modelBuilder.Model.GetEntityTypes())
                 if (mutableEntityType.ClrType.IsSubclassOf(typeof(BaseAuditEntity)))

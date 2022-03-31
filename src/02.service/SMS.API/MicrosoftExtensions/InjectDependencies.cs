@@ -1,6 +1,9 @@
-﻿using Common.VNextFramework.Extensions;
+﻿using Common.VNextFramework.EntityFramework;
+using Common.VNextFramework.Extensions;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using SMS.Base;
+using SMS.Data;
 
 namespace SMS.API.MicrosoftExtensions
 {
@@ -9,9 +12,9 @@ namespace SMS.API.MicrosoftExtensions
         public static IServiceCollection AddInjectDependencies(this IServiceCollection services, AppSettings appSettings)
         {
             services.AddHttpContextAccessor();
-            //services.AddScopedScan("SMS.Service");
-            //services.AddScopedScan("SMS.Repository");
-            //services.AddScopedScan("SMS.Manager");
+            
+
+            services.AddScopedScan("SMS.Service");
             return services;
         }
     }

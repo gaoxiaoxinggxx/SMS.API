@@ -5,13 +5,19 @@ using SMS.Base.Enums;
 
 namespace SMS.API.Controllers
 {
-    /// <summary>
-    /// 
-    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
-    [ApiGroup(ApiGroupNameEnum.Auth)]
     public class BaseApiController : ControllerBase
     {
+    }
+
+    [ApiGroup(ApiGroupNameEnum.App)]
+    public class AppBaseApiController : BaseApiController
+    { 
+    }
+
+    [ApiGroup(ApiGroupNameEnum.Other)]
+    public class OtherBaseApiController : BaseApiController
+    { 
     }
 }

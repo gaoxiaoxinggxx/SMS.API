@@ -1,16 +1,17 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Common.VNextFramework.EntityFramework" Version="1.0.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.14" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\..\01.commen\Commen.EntityFrameworkCore.SqlServer\Common.VNextFramework.EntityFramework\Common.VNextFramework.EntityFramework.csproj" />
     <ProjectReference Include="..\SMS.Base\SMS.Base.csproj" />
+	  <PackageReference Include="EntityFrameworkCore.DataEncryption" Version="3.0.0" />
+	  <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="5.0.6" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.6" />
+	  <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
   </ItemGroup>
 
 </Project>
