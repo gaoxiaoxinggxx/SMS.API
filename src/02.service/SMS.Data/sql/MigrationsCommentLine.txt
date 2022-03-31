@@ -1,0 +1,13 @@
+﻿1:指定DbContext 并且指定文件夹
+Add-Migration InitialCreate -Context Ids4DbContext -OutputDir Migrations\Ids4Db
+
+2:指定文件更新数据库 / 本项目存在两个 DbContext 所以需要指定相应的Context
+update-database InitialCreate -Context Ids4DbContext
+
+3:生成脚本文件
+Script-Migration AddNewTables
+
+
+Script-Migration:以下命令将生成一个从空白数据库到最新迁移的 SQL 脚本
+Script-Migration AddNewTables: 以下命令将生成一个从给定迁移到最新迁移的 SQL 脚本
+Script-Migration AddNewTables AddAuditTable: 以下命令将生成一个从指定 from 迁移到指定 to 迁移的 SQL 脚本
