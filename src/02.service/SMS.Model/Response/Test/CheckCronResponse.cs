@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BC.CSM.Response.Test
+namespace SMS.Model.Response.Test
 {
     public class CheckCronResponse
     {

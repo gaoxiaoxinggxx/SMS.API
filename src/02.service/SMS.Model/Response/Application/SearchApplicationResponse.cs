@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using SMS.Base.Enums;
 
-namespace BC.CSM.Response.Application
+namespace SMS.Model.Response.Application
 {
     public class SearchApplicationResponse
     {

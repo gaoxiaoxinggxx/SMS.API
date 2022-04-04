@@ -1,5 +1,4 @@
-﻿using BC.CSM;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace SMS.Model.Dtos
 {

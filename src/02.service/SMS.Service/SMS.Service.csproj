@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\01.commen\Commen.Helper\Commen.Helper.csproj" />
+    <ProjectReference Include="..\..\01.commen\Commen.Model\Commen.Model.csproj" />
     <ProjectReference Include="..\SMS.Base\SMS.Base.csproj" />
     <ProjectReference Include="..\SMS.Data\SMS.Data.csproj" />
     <ProjectReference Include="..\SMS.Model\SMS.Model.csproj" />

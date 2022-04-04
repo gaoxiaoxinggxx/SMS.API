@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BC.CSM.Response
+namespace SMS.Model.Response
 {
     public class CommonActionResponse
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BC.CSM.Response.User
+namespace SMS.Model.Response.User
 {
     public class SearchAadUserResponse
     {

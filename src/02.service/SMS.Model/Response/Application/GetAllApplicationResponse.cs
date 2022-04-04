@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BC.CSM.Response.Application
+namespace SMS.Model.Response.Application
 {
     public class GetAllApplicationResponse
     {

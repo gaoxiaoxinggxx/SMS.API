@@ -1,4 +1,4 @@
-﻿namespace BC.CSM.Response
+﻿namespace SMS.Model.Response
 {
     public class CommonSuccessResponse
     {

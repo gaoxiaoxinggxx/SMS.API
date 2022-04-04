@@ -2,7 +2,7 @@
 using SMS.Model.Dtos;
 using SMS.Base.Enums;
 
-namespace BC.CSM.Response.RecurringPlan
+namespace SMS.Model.Response.RecurringPlan
 {
     public class GetByIdRecurringPlanResponse
     {

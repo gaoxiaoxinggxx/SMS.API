@@ -1,4 +1,4 @@
-﻿namespace BC.CSM
+﻿namespace SMS.Model
 {
     public enum ActionStatusEnum
     {

@@ -1,8 +1,11 @@
 ﻿using Common.VNextFramework.EntityFramework;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using SMS.Data.Entitys;
 using System;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -10,8 +13,10 @@ namespace SMS.Data
 {
     public class SmsDbContext : DbContext
     {
-        public SmsDbContext(DbContextOptions<SmsDbContext> options) : base(options)
+        private readonly IServiceProvider _serviceProvider;
+        public SmsDbContext(DbContextOptions<SmsDbContext> options, IServiceProvider serviceProvider) : base(options)
         {
+            _serviceProvider = serviceProvider;
         }
 
         public virtual DbSet<User> Users { get; set; }
@@ -45,6 +50,8 @@ namespace SMS.Data
 
         private void AddTimestamps()
         {
+            var userId = _serviceProvider.GetService<IHttpContextAccessor>()?.HttpContext?.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Name)?.Value;
+
             var trackingEntities = ChangeTracker.Entries().Where(x => x.Entity is BaseAuditEntity && (x.State == EntityState.Added || x.State == EntityState.Modified));
 
             foreach (var trackingEntity in trackingEntities)
@@ -54,13 +61,13 @@ namespace SMS.Data
                 if (trackingEntity.State == EntityState.Added)
                 {
                     entity.CreatedOn = DateTime.Now;
-                    entity.CreatedBy = "";
+                    entity.CreatedBy = userId;
                     entity.IsDeleted = false;
                 }
                 else
                 {
                     entity.LastModifiedOn = DateTime.Now;
-                    entity.LastModifiedBy = "";
+                    entity.LastModifiedBy = userId;
                 }
             }
         }

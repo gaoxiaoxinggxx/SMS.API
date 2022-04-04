@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using SMS.Model.Dtos;
 
-namespace BC.CSM.Response.Application
+namespace SMS.Model.Response.Application
 {
     public class GetApplicationResponse
     {

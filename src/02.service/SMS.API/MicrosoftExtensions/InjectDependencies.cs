@@ -12,7 +12,7 @@ namespace SMS.API.MicrosoftExtensions
         public static IServiceCollection AddInjectDependencies(this IServiceCollection services, AppSettings appSettings)
         {
             services.AddHttpContextAccessor();
-            
+            services.AddSingleton<IAppSettings>(appSettings);
 
             services.AddScopedScan("SMS.Service");
             return services;

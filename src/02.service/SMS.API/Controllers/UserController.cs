@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using SMS.Model.Response.User;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SMS.Model.Request.User;
 using SMS.Service.Interfaces;
@@ -15,11 +16,26 @@ namespace SMS.API.Controllers
             _userService = userService;
         }
 
-
+        /// <summary>
+        /// 创建用户
+        /// </summary>
+        /// <param name="req"></param>
+        /// <returns></returns>
         [HttpPost("create")]
         public async Task<bool> CreateUser(CreateAdminUserRequest req)
         {
             return await _userService.CreateUser(req);
         }
+
+        /// <summary>
+        /// 获取当前用户信息
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost("current")]
+        public async Task<CurrentUserResponse> GetCurrentInfo()
+        {
+            return await _userService.GetCurrentInfo();
+        }
+        
     }
 }
