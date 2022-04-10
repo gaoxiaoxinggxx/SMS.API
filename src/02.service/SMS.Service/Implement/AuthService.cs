@@ -1,10 +1,12 @@
 ﻿using Commen.Helper;
 using Commen.Model.Exceptions;
 using Common.VNextFramework.EntityFramework;
+using Microsoft.AspNetCore.SignalR;
 using SMS.Base;
 using SMS.Data.Entitys;
 using SMS.Model.Request.User;
 using SMS.Model.Response.User;
+using SMS.Service.Hubs;
 using SMS.Service.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -19,11 +21,13 @@ namespace SMS.Service.Implement
     {
         private readonly IEFAsyncRepository<User> _userUserRepository;
         private readonly IAppSettings _appSettings;
+        private readonly IHubContext<ChatHub> _charHubContext;
 
-        public AuthService(IEFAsyncRepository<User> userUserRepository, IAppSettings appSettings)
+        public AuthService(IEFAsyncRepository<User> userUserRepository, IAppSettings appSettings, IHubContext<ChatHub> charHubContext)
         {
             _userUserRepository = userUserRepository;
             _appSettings = appSettings;
+            _charHubContext = charHubContext;
         }
 
         public async Task<UserAuthResponse> Auth(UserAuthRequest req)
@@ -42,6 +46,10 @@ namespace SMS.Service.Implement
             };
 
             var clientAuthConfig = _appSettings.AppClientAuthConfig;
+
+            // notify examiner front end
+            await _charHubContext.Clients.User("gaoxiaoxing").SendCoreAsync("candidateDisconnected", new object[] { "高小星" });
+
             return new UserAuthResponse()
             {
                 Data = "success",

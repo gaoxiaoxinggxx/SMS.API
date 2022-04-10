@@ -8,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using SMS.API.MicrosoftExtensions;
 using SMS.Base;
 using SMS.Data;
+using SMS.Service.Hubs;
 
 namespace SMS.API
 {
@@ -48,6 +49,8 @@ namespace SMS.API
             //注入：Hangfire定时任务
             services.AddCustomHangfireService(Configuration);
             //注入：ApiService,Refit.HttpClientFactory
+            //注入：SignalR
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -73,6 +76,7 @@ namespace SMS.API
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<ChatHub>("/chat");
             });
         }
     }
