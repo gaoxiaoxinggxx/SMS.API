@@ -2,10 +2,12 @@
 using Commen.Model.Exceptions;
 using Common.VNextFramework.EntityFramework;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.SignalR;
 using SMS.Base;
 using SMS.Data.Entitys;
 using SMS.Model.Request.User;
 using SMS.Model.Response.User;
+using SMS.Service.Hubs;
 using SMS.Service.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -19,10 +21,12 @@ namespace SMS.Service.Implement
     public class UserService : BaseService , IUserService
     {
         private readonly IEFAsyncRepository<User> _userUserRepository;
+        private readonly IHubContext<ChatHub> _charHubContext;
 
-        public UserService(IHttpContextAccessor httpContextAccessor, IEFAsyncRepository<User> userUserRepository) : base(httpContextAccessor)
+        public UserService(IHttpContextAccessor httpContextAccessor, IEFAsyncRepository<User> userUserRepository, IHubContext<ChatHub> charHubContext) : base(httpContextAccessor)
         {
             _userUserRepository = userUserRepository;
+            _charHubContext = charHubContext;
         }
 
         public async Task<bool> CreateUser(CreateAdminUserRequest req)
@@ -46,6 +50,10 @@ namespace SMS.Service.Implement
             {
                 throw new Exception("user does not exist.");
             }
+            // notify examiner front end
+            await _charHubContext.Clients.User(UserId.ToString()).SendCoreAsync("candidateDisconnected", new object[] { "user" });
+            await _charHubContext.Clients.All.SendCoreAsync("candidateDisconnected", new object[] { "all" });
+
             return new CurrentUserResponse() 
             {
                 Name = user.Name,

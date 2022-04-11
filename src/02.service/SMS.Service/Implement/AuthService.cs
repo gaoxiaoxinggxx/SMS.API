@@ -47,9 +47,6 @@ namespace SMS.Service.Implement
 
             var clientAuthConfig = _appSettings.AppClientAuthConfig;
 
-            // notify examiner front end
-            await _charHubContext.Clients.User("gaoxiaoxing").SendCoreAsync("candidateDisconnected", new object[] { "高小星" });
-
             return new UserAuthResponse()
             {
                 Data = "success",
