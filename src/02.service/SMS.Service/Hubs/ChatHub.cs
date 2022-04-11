@@ -12,10 +12,10 @@ namespace SMS.Service.Hubs
     //[HubName("chat")]
     public class ChatHub : Hub
     {
-        public override Task OnConnectedAsync()
+        public override async Task OnConnectedAsync()
         {
             //建立连接
-            return base.OnConnectedAsync();
+            await base.OnConnectedAsync();
         }
 
         public override Task OnDisconnectedAsync(Exception exception)
@@ -24,9 +24,15 @@ namespace SMS.Service.Hubs
             return base.OnDisconnectedAsync(exception);
         }
 
-        public async Task SendMessage(string user, string message)
+        public async Task SendMessageOfAll(string message)
         {
-            await Clients.All.SendAsync("ReceiveMessage", user, message);
+            await Clients.All.SendAsync("ReceiveMessage",message);
         }
+
+        public async Task SendMessageOfCaller(string message)
+        {
+            await Clients.Caller.SendAsync("candidateDisconnected", message);
+        }
+
     }
 }
