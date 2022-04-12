@@ -52,7 +52,6 @@ namespace SMS.API
             //注入：ApiService,Refit.HttpClientFactory
             //注入：SignalR
             services.AddSignalR();
-            services.AddSingleton<IUserIdProvider, CustomUserIdProvider>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -74,6 +73,8 @@ namespace SMS.API
             app.UseCustomHangfire();
             //鉴权授权管道
             app.UseCustomAuth();
+
+            app.UseWebSockets();
 
             app.UseEndpoints(endpoints =>
             {

@@ -36,6 +36,5 @@ namespace SMS.API.Controllers
         {
             return await _userService.GetCurrentInfo();
         }
-        
     }
 }
