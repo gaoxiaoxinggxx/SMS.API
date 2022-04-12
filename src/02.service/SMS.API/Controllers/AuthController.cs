@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using SMS.Base.Attributes;
 using SMS.Base.Enums;
 using SMS.Model.Request.User;
 using SMS.Model.Response.User;

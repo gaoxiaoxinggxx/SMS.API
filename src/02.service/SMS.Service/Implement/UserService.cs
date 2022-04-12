@@ -1,19 +1,13 @@
 ﻿using Commen.Helper;
-using Commen.Model.Exceptions;
 using Common.VNextFramework.EntityFramework;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.SignalR;
-using SMS.Base;
 using SMS.Data.Entitys;
 using SMS.Model.Request.User;
 using SMS.Model.Response.User;
 using SMS.Service.Hubs;
 using SMS.Service.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace SMS.Service.Implement

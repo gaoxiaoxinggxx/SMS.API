@@ -1,14 +1,11 @@
-﻿using Hangfire;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SignalR;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SMS.API.MicrosoftExtensions;
 using SMS.Base;
-using SMS.Data;
 using SMS.Service.Hubs;
 
 namespace SMS.API
@@ -22,8 +19,7 @@ namespace SMS.API
 
         public AppSettings AppSettings { get; } = new();
         public IConfiguration Configuration { get; }
-
-        public IBackgroundJobClient BackgroundJobs { get; }
+        
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -51,7 +47,8 @@ namespace SMS.API
             services.AddCustomHangfireService(Configuration);
             //注入：ApiService,Refit.HttpClientFactory
             //注入：SignalR
-            services.AddSignalR();
+            services.AddSignalR(x => { x.EnableDetailedErrors = true; });
+            //services.AddSingleton<IUserIdProvider, CustomUserIdProvider>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
