@@ -8,6 +8,7 @@ using SMS.Model.Response.User;
 using SMS.Service.Hubs;
 using SMS.Service.Interfaces;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace SMS.Service.Implement
@@ -53,6 +54,38 @@ namespace SMS.Service.Implement
                 Name = user.Name,
                 Email = user.Email,
                 Role = user.Role
+            };
+        }
+
+        public async Task<SearchUserResponse> Search(SearchUserRequest req)
+        {
+            var userSpec = PagedSpecification<User>.GetSpecification(req);
+            if (!string.IsNullOrEmpty((req.Name)))
+            {
+                userSpec.AddPredicate(x=>x.Name.Contains(req.Name));
+            }
+
+            if (!string.IsNullOrEmpty(req.Email))
+            {
+                userSpec.AddPredicate(x=>x.Email.Contains(req.Email));
+            }
+
+            var users = await _userUserRepository.GetPagedListAsync(userSpec);
+            return new SearchUserResponse
+            {
+                PageIndex = users.PageIndex,
+                PageSize = users.PageSize,
+                Total = users.Total,
+                Data = users.Data.Select(x => 
+                new SearchUserItem
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    Email = x.Email,
+                    Role = x.Role,
+                    Status = x.Status,
+                    CreatedOn = x.CreatedOn!.Value.ToString("yyyy-MM-dd HH:mm:ss")
+                }).ToList()
             };
         }
     }

@@ -4,6 +4,7 @@ namespace SMS.Model.Request.User
 {
     public class SearchUserRequest : PageQueryModel
     {
-        public string Keyword { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
     }
 }

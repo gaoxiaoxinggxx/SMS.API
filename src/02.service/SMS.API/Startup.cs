@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json.Converters;
 using SMS.API.MicrosoftExtensions;
 using SMS.Base;
 using SMS.Service.Hubs;
@@ -27,7 +28,10 @@ namespace SMS.API
             //注入：配置文件信息
             Configuration.Bind("AppSettings", AppSettings);
             //注入：控制器
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(options =>
+            {
+                options.SerializerSettings.Converters.Add(new StringEnumConverter());
+            });
             //注入：Swagger文档
             services.AddCustomSwaggerDocumentService(AppSettings);
             //注入：AddHttpContextAccessor
